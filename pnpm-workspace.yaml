@@ -1,0 +1,6 @@
+# Which dependency build scripts are permitted to run (pnpm 11+ blocks them by default).
+# dtrace-provider is an optional native probe pulled in by dev tooling; it is not needed.
+allowBuilds:
+  dtrace-provider: false
+  esbuild: true
+  spawn-sync: true
