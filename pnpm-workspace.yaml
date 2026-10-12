@@ -4,3 +4,7 @@ allowBuilds:
   dtrace-provider: false
   esbuild: true
   spawn-sync: true
+
+# Patched transitive version for an open advisory, scoped to one major.
+overrides:
+  "shell-quote@<1.11.0": ^1.11.0
