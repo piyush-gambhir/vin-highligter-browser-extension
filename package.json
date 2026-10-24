@@ -17,7 +17,8 @@
     "zip:firefox": "wxt zip -b firefox",
     "compile": "tsc --noEmit",
     "postinstall": "wxt prepare",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test:security": "node --test scripts/security/verify-node-forge-security.cjs"
   },
   "dependencies": {
     "prettier-plugin-tailwindcss": "^0.8.1",
