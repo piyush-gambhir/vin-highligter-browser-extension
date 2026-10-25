@@ -27,6 +27,7 @@ jobs:
           cache: pnpm
 
       - run: pnpm install --frozen-lockfile
+      - run: pnpm test:security
       - run: pnpm run compile
       - run: pnpm run zip
       - run: pnpm run zip:firefox

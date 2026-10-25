@@ -1,8 +1,8 @@
 {
-  "name": "wxt-web-extension-react-ts-boilerplate",
-  "description": "manifest.json description",
+  "name": "vin-highlighter-browser-extension",
+  "description": "Highlights VINs on webpages and links them to Spyne.",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.1",
   "type": "module",
   "packageManager": "pnpm@12.15.0",
   "engines": {
