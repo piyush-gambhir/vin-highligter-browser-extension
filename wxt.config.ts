@@ -6,7 +6,6 @@ export default defineConfig({
   manifestVersion: 3,
   manifest: {
     name: "VIN Highlighter",
-    version: "1.0",
     description: "Highlights VINs on webpages.",
     permissions: ["activeTab", "scripting"],
   },
