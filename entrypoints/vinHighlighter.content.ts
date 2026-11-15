@@ -1,32 +1,29 @@
 export default defineContentScript({
   matches: ["*://*/*"],
   main() {
-    // Regular expression to match VINs
     const vinRegex = /\b[A-HJ-NPR-Z0-9]{17}\b/g;
 
-    // Function to create a highlighted span for a VIN with a link
     function highlightVIN(vin: string): HTMLElement {
       const link = document.createElement("a");
-      link.href = `https://console.spyne.ai/vin/add?vin=${vin}`; // Add VIN as a query parameter
-      link.style.textDecoration = "none"; // Remove underline
+      link.href = `https://console.spyne.ai/vin/add?vin=${encodeURIComponent(vin)}`;
+      link.style.textDecoration = "none";
 
       const span = document.createElement("span");
-      span.style.backgroundColor = "yellow"; // Highlight color
+      span.style.backgroundColor = "yellow";
       span.textContent = vin;
 
       link.appendChild(span);
       return link;
     }
 
-    // Function to walk through the DOM and replace VINs with highlighted spans and links
     function walkAndHighlight(node: Node): void {
       let child: Node | null;
       let next: Node | null;
 
       switch (node.nodeType) {
-        case 1: // Element node
-        case 9: // Document node
-        case 11: // Document fragment node
+        case 1:
+        case 9:
+        case 11:
           child = node.firstChild;
           while (child) {
             next = child.nextSibling;
@@ -35,7 +32,7 @@ export default defineContentScript({
           }
           break;
 
-        case 3: // Text node
+        case 3:
           const matches = node.textContent?.match(vinRegex);
           if (matches) {
             const parent = node.parentNode;
@@ -70,7 +67,6 @@ export default defineContentScript({
       }
     }
 
-    // Start highlighting VINs in the document body
     walkAndHighlight(document.body);
   },
 });
