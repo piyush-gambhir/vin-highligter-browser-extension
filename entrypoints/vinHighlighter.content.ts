@@ -5,7 +5,7 @@ export default defineContentScript({
 
     function highlightVIN(vin: string): HTMLElement {
       const link = document.createElement("a");
-      link.href = `https://console.spyne.ai/vin/add?vin=${vin}`;
+      link.href = `https://console.spyne.ai/vin/add?vin=${encodeURIComponent(vin)}`;
       link.style.textDecoration = "none";
 
       const span = document.createElement("span");
